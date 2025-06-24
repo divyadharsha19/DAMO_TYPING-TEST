@@ -30,7 +30,10 @@ function App() {
   });
 
   const intervalRef = useRef(null);
-
+  useEffect(() => {
+  console.log('Environment:', process.env.NODE_ENV);
+  console.log('API Base:', process.env.REACT_APP_API_URL);
+  }, []);
   useEffect(() => {
     if (isRunning && timer > 0) {
       intervalRef.current = setInterval(() => {
