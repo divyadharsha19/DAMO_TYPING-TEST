@@ -1,38 +1,333 @@
-.App {
+:root {
+  --bg-light: #f5f7fa;
+  --bg-dark: #1e1e2f;
+  --text-light: #1c1c1c;
+  --text-dark: #f0f0f0;
+  --primary: #007bff;
+  --accent: #ff9800;
+  --correct: #d4edda;
+  --incorrect: #f8d7da;
+  --section-1: #e3f2fd; /* light blue */
+  --section-2: #fff3e0; /* light orange */
+  --section-3: #e8f5e9; /* light green */
+  --section-4: #fce4ec; /* light pink */
+  --section-5: #ede7f6; /* light purple */
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+section {
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(19, 5, 5, 0.05);
+}
+
+.hero {
+  background-color: #d8f0ff;
+  padding: 2rem;
+  border-radius: 12px;
   text-align: center;
+  margin-top: 1rem;
+  color: #1a1a1a;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hero p {
+  font-size: 1rem;
+  color: #333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* 🌙 Dark mode fix */
+body.dark .hero {
+  background-color: #1e293b; /* darker neutral blue-gray */
+  color: #ffffff;
+}
+
+body.dark .hero p {
+  color: #ccc;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: #444444;
+}
+
+.settings {
+  background-color: var(--section-2);
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.settings select,
+.settings button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+.settings button:hover {
+  background-color: var(--accent);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.typing-test {
+  background-color: var(--section-3);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.quote-box {
+  padding: 1rem;
+  border: 2px dashed #ccc;
+  margin-bottom: 1rem;
+  background: #fff;
+  font-family: monospace;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  min-height: 60px;
+  border-radius: 8px;
+  color: #000; /* Light text in light mode */
+  white-space: pre-wrap;
+}
+
+/* Add this for dark mode text visibility */
+body.dark .quote-box {
+  background-color: #2c2c3a;
+  border-color: #555;
+  color: #f0f0f0; /* Light text on dark background */
+}
+
+
+.correct {
+  background-color: var(--correct);
+  border-radius: 4px;
+}
+.incorrect {
+  background-color: var(--incorrect);
+  border-radius: 4px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 1rem;
+  font-size: 1rem;
+  resize: none;
+  font-family: monospace;
+  border-radius: 6px;
+  border: 1px solid #f07676;
+}
+
+textarea:focus {
+  outline: 2px solid var(--primary);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}
+
+.typing-test button {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+.typing-test button:hover {
+  background-color: #0056b3;
+}
+.main-layout {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Typing test on the left */
+.typing-area {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* High scores sidebar on the right */
+.high-scores {
+  width: 250px;
+  background-color: #fbefff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+body.dark .high-scores {
+  background-color: #2a2233;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.high-scores h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.high-scores ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.high-scores li {
+  background: #fff;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+body.dark .high-scores li {
+  background: #3b3244;
+  color: #ddd;
+}
+
+.quote-box {
+  font-family: 'Courier New', monospace;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  word-spacing: 2px;
+}
+
+.high-scores {
+  background-color: var(--section-4);
+}
+.high-scores h2 {
+  margin-top: 0;
+}
+.high-scores ul {
+  list-style: none;
+  padding: 0;
+}
+.high-scores li {
+  background: #fff;
+  margin-bottom: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.how-it-works {
+  background-color: #f3e8ff;
+  color: #222;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.how-it-works h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #c0392b;
+}
+
+/* 🌙 Dark mode fix */
+/* ======================= */
+/* Dark Theme Section Fixes */
+/* ======================= */
+
+body.dark .settings {
+  background-color: #2b2b2b;
+  color: #e6e6e6;
+}
+
+body.dark .typing-test {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+body.dark .quote-box {
+  background-color: #111;
+  color: #eee;
+  border: 1px dashed #777;
+}
+
+body.dark textarea {
+  background-color: #1a1a1a;
+  color: #f8f8f8;
+  border: 1px solid #444;
+}
+
+body.dark .stats {
+  color: #ccc;
+}
+
+body.dark .restart-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+body.dark .restart-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Make how-it-works readable */
+body.dark .how-it-works {
+  background-color: #2e2535;
+  color: #e0e0e0;
+}
+
+/* Footer styling in dark */
+body.dark footer {
+  color: #aaa;
+}
+
+
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #e795fa;
+}
+footer a {
+  color: var(--primary);
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
 }
