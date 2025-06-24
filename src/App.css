@@ -265,10 +265,6 @@ body.dark .high-scores li {
   color: #c0392b;
 }
 
-/* 🌙 Dark mode fix */
-/* ======================= */
-/* Dark Theme Section Fixes */
-/* ======================= */
 
 body.dark .settings {
   background-color: #2b2b2b;
@@ -297,7 +293,7 @@ body.dark .stats {
 }
 
 body.dark .restart-btn {
-  background-color: #007bff;
+  background-color: #f63232;
   color: #fff;
 }
 
